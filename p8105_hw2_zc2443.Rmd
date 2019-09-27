@@ -20,7 +20,20 @@ trashwheel = read_excel("HealthyHarborWaterWheelTotals2018-7-28.xlsx", sheet = "
                         range = "A2:N336", na = "") %>%
   janitor::clean_names() %>%
   na.omit() %>% 
-  mutate(sports_balls = as.integer(round(pull(trashwheel, sports_balls), 0)))
+  mutate(sports_balls = as.integer(round(sports_balls, 0)))
 ```
 
 ## Question 2
+```{r}
+precip_2017 = read_excel("HealthyHarborWaterWheelTotals2018-7-28.xlsx", sheet = "2017 Precipitation",
+                        range = "A2:B14", na = "") %>% 
+  mutate(Year = 2017)
+
+precip_2018 = read_excel("HealthyHarborWaterWheelTotals2018-7-28.xlsx", sheet = "2017 Precipitation",
+                        range = "A2:B9", na = "") %>% 
+  mutate(Year = 2018)
+
+comb_precip = left_join(precip_2017, precip_2018, by = "Month") %>% 
+  mutate(Month = month.name)
+```
+
