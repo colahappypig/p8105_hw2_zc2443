@@ -37,3 +37,6 @@ comb_precip = left_join(precip_2017, precip_2018, by = "Month") %>%
   mutate(Month = month.name)
 ```
 
+## Question 3
+The trashwheel dataset has `r nrow(trashwheel)` observations and the comb_precip has `r nrow(comb_precip)` observations. For the trashwheel dataset, variable sports ball is the key variable; for the comb_precip dataset, total number of precipitation is the key variable. The total precipitation in 2018 is `r sum(pull(precip_2018,Total))` in. The median number of sports balls in a dumpster in 2017 is `r median(pull(filter(trashwheel, year == 2017),sports_balls))`
+
