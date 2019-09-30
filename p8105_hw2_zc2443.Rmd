@@ -17,7 +17,7 @@ library(readxl)
 ## Question 1
 ```{r}
 trashwheel = read_excel("HealthyHarborWaterWheelTotals2018-7-28.xlsx", sheet = "Mr. Trash Wheel",
-                        range = "A2:N336", na = "") %>%
+                        range = "A2:N338", na = "") %>%
   janitor::clean_names() %>%
   na.omit() %>% 
   mutate(sports_balls = as.integer(round(sports_balls, 0)))
