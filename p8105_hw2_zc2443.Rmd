@@ -16,8 +16,8 @@ library(readxl)
 
 ## Question 1
 ```{r}
-trashwheel = read_excel("HealthyHarborWaterWheelTotals2018-7-28.xlsx", sheet = "Mr. Trash Wheel",
-                        range = "A2:N338", na = "") %>%
+trashwheel = read_excel("Trash-Wheel-Collection-Totals-8-6-19.xlsx", sheet = "Mr. Trash Wheel",
+                        range = "A2:N406", na = "") %>%
   janitor::clean_names() %>%
   na.omit() %>% 
   mutate(sports_balls = as.integer(round(sports_balls, 0)))
@@ -25,12 +25,12 @@ trashwheel = read_excel("HealthyHarborWaterWheelTotals2018-7-28.xlsx", sheet = "
 
 ## Question 2
 ```{r}
-precip_2017 = read_excel("HealthyHarborWaterWheelTotals2018-7-28.xlsx", sheet = "2017 Precipitation",
+precip_2017 = read_excel("Trash-Wheel-Collection-Totals-8-6-19.xlsx", sheet = "2017 Precipitation",
                         range = "A2:B14", na = "") %>% 
   mutate(Year = 2017)
 
-precip_2018 = read_excel("HealthyHarborWaterWheelTotals2018-7-28.xlsx", sheet = "2017 Precipitation",
-                        range = "A2:B9", na = "") %>% 
+precip_2018 = read_excel("Trash-Wheel-Collection-Totals-8-6-19.xlsx", sheet = "2018 Precipitation",
+                        range = "A2:B14", na = "") %>% 
   mutate(Year = 2018)
 
 comb_precip = left_join(precip_2017, precip_2018, by = "Month") %>% 
