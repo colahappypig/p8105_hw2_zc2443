@@ -86,11 +86,16 @@ pop_baby = read_csv("Popular_Baby_Names.csv") %>%
 
 olivia = filter(pop_baby, gender == "FEMALE", childs_first_name == "OLIVIA") %>% 
   pivot_wider(names_from = year_of_birth, values_from = rank) %>% 
-  select(-gender, -childs_first_name, -count)
+  select(-gender, -childs_first_name, -count) %>% 
+  knitr::kable()
+
+#pop_male = filter(pop_baby, gender == "MALE", rank == 1) %>% 
+#  pivot_wider(names_from = year_of_birth, values_from = rank) %>% 
+#  select(-gender, -ethnicity, -count)
 
 pop_male = filter(pop_baby, gender == "MALE", rank == 1) %>% 
-  pivot_wider(names_from = year_of_birth, values_from = rank) %>% 
-  select(-gender, -ethnicity, -count)
+  select(-gender, -ethnicity, -count) %>% 
+  knitr::kable()
 
 filter(pop_baby, gender == "MALE", ethnicity == "WHITE NON HISPANIC", year_of_birth == 2016) %>% 
   ggplot(aes(x = rank, y = count)) + geom_point(alpha = 0.4)
